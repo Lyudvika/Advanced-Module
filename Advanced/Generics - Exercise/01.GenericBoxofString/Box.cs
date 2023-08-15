@@ -1,0 +1,30 @@
+﻿using System.Text;
+
+namespace BoxOfString;
+public class Box<T>
+{
+    private List<T> items;
+
+    public Box()
+    {
+        items = new List<T>();
+    }
+
+    //methods
+    public void Add(T item)
+    {
+        items.Add(item);
+    }
+
+    public override string ToString()
+    {
+        StringBuilder sb = new();
+
+        foreach (T item in items)
+        {
+            sb.AppendLine($"{typeof(T)}: {item}");
+        }
+
+        return sb.ToString().TrimEnd(); //removing the last empty line from the appendLine
+    }
+}
